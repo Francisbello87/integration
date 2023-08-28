@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import cn from 'classnames'
 import useOnScreen from "../../hooks/useOnScreen";
 
-gsap.registerPlugin(ScrollTrigger);
+
 
 export const GalleryItem = ({
   src,
@@ -43,7 +43,7 @@ export const GalleryItem = ({
 };
 const Gallery = () => {
   const [activeImage, setActiveImage] = useState(1);
-  const ref = useRef(null);
+  const ref = useRef();
 
   useEffect(() => {
     setTimeout(()=>{
@@ -68,7 +68,7 @@ const Gallery = () => {
  
   return (
     <section data-scroll-section className="section-wrapper bg-primaryGreen -mx-[10.6vw] relative" >
-      <div className="gallery h-[80vh] py-[10vh] w-[400%] flex flex-nowrap">
+      <div ref={ref} className="gallery h-[80vh] py-[10vh] w-[400%] flex flex-nowrap">
         <div className="gallery-counter absolute top-[10%] left-[100px] z-10 font-Lato font-semibold text-base inline-block mix-blend-difference leading-4">
           <span className=" text-white">{activeImage}</span>
           <span className=" divider bg-white w-[6.25vw] my-2 mx-3 h-[1px] inline-block"></span>

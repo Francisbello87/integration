@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
 // import 'locomotive-scroll/src/styles'
 
 gsap.registerPlugin(ScrollTrigger);
+
 const useLocoScroll = (start) => {
   useEffect(() => {
     if (!start) return;
 
     const scrollEl = document.querySelector("#main-container");
-    const locoScroll = new LocomotiveScroll({
+
+    let locoScroll = new LocomotiveScroll({
       el: scrollEl,
       smooth: true,
       multiplier: 1,
