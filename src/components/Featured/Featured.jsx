@@ -12,7 +12,7 @@ const Featured = () => {
         <h5>Lilac</h5>
         <img
           data-scroll
-          src={PENS}
+          src="https://images.unsplash.com/photo-1535850836387-0f9dfce30846?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODF8fGZsb3dlcnN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
           alt=""
         />
       </div>
@@ -22,7 +22,7 @@ const Featured = () => {
         </h5>
         <img
           data-scroll
-          src={Fea}
+          src="https://images.unsplash.com/photo-1613539246066-78db6ec4ff0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGZsb3dlcnN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
           alt=""
         />
       </div>

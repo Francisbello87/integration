@@ -4,6 +4,7 @@ import useOnScreen from "../../hooks/useOnScreen";
 import SplitText from "../../../gsap-bonus/package/SplitText";
 import cn from "classnames";
 import { gsap } from "gsap";
+gsap.registerPlugin(SplitText)
 
 const About = () => {
   const ref = useRef();

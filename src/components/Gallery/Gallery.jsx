@@ -5,6 +5,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import cn from "classnames";
 import useOnScreen from "../../hooks/useOnScreen";
 
+gsap.registerPlugin(ScrollTrigger)
+
 export const GalleryItem = ({ src, title, updateActiveImage, index }) => {
   const ref = useRef(null);
 
@@ -35,9 +37,11 @@ export const GalleryItem = ({ src, title, updateActiveImage, index }) => {
     </div>
   );
 };
-const Gallery = () => {
+
+
+const Gallery = ({ src, index, columnOffset }) => {
   const [activeImage, setActiveImage] = useState(1);
-  const ref = useRef();
+  const ref = useRef(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -55,7 +59,7 @@ const Gallery = () => {
           end: () => `+=${ref.current.offsetWidth}`,
         },
       });
-      ScrollTrigger.refresh();
+      // ScrollTrigger.refresh();
     });
   }, []);
 
