@@ -51,9 +51,12 @@ section{
   align-items: center;
 }
 .featured-section img{
+  clip-path: inset(100% 0% 0% 0%);
+  transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.featured-section img.is-reveal{
   clip-path: inset(0% 0% 0% 0%);
 }
-
 .featured-row-layout, .featured-column-layout{
   display: grid;
   gap: .625rem;
@@ -90,6 +93,10 @@ section{
   width: 100vw;
   height: 100%;
 }
+.gallery-item-wrapper.gallery-item-image.isreveal{
+transform: scale(1);
+filter: none;
+}
 .gallery-item-image{
   background-size: cover;
   background-position: center;
@@ -97,7 +104,9 @@ section{
   width: 100%;
   height: 100%;
   will-change: transform;
-  transform: scale(1);
+  transform: scale(0.7);
+  transition: all 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+  filter: grayscale(1000%) sepia(20%) brightness(80%);
 }
 
 @keyframes pulse {
@@ -114,4 +123,8 @@ section{
 
 .pulsate {
   animation: pulse 2s infinite;
+}
+
+.lineChildren{
+  transform: translate(0, 500px);
 }

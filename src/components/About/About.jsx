@@ -1,11 +1,43 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SectionHeader } from "../SectionHeader/SectionHeader";
+import useOnScreen from "../../hooks/useOnScreen";
+import cn from "classnames";
 
 const About = () => {
+  const ref = useRef();
+
+  const [reveal, setReveal] = useState(false);
+  const OnScreen = useOnScreen(ref);
+
+  // useEffect(() =>{
+  //   if(reveal){
+
+  //      const split = new SplitText('#header-text', {
+  //        type: 'lines',
+  //        linesClass: 'lineChildren'
+  //      })
+
+  //      gsap.to(split.lines, {
+  //        duration: 1,
+  //        y:0,
+  //        opacity:1,
+  //        stagger: 0.1,
+  //        ease:' power2'
+  //      })
+  //     }
+  //    },[])
+
+  useEffect(() => {
+    if (OnScreen) setReveal(OnScreen);
+  }, [OnScreen]);
   return (
-    <section className="about-section" data-scroll-section >
-      <SectionHeader title='about'/>
-      <p className=" text-5xl leading-tight" id="headline">
+    <section className="about-section" data-scroll-section>
+      <SectionHeader title="about" />
+      <p
+        ref={ref}
+        className={cn(" text-5xl leading-tight", { "is-reveal": reveal })}
+        id="headline"
+      >
         At Greenify, we are more than just an e-commerce website; we are a
         passionate community dedicated to fostering a sustainable and
         eco-friendly lifestyle. Our mission is to empower environmentally
