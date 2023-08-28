@@ -1,35 +1,36 @@
 import React, { useEffect, useRef, useState } from "react";
 import { SectionHeader } from "../SectionHeader/SectionHeader";
 import useOnScreen from "../../hooks/useOnScreen";
+import SplitText from "../../../gsap-bonus/package/SplitText";
 import cn from "classnames";
+import { gsap } from "gsap";
 
 const About = () => {
   const ref = useRef();
-
   const [reveal, setReveal] = useState(false);
   const OnScreen = useOnScreen(ref);
-
-  // useEffect(() =>{
-  //   if(reveal){
-
-  //      const split = new SplitText('#header-text', {
-  //        type: 'lines',
-  //        linesClass: 'lineChildren'
-  //      })
-
-  //      gsap.to(split.lines, {
-  //        duration: 1,
-  //        y:0,
-  //        opacity:1,
-  //        stagger: 0.1,
-  //        ease:' power2'
-  //      })
-  //     }
-  //    },[])
 
   useEffect(() => {
     if (OnScreen) setReveal(OnScreen);
   }, [OnScreen]);
+
+  useEffect(() => {
+    if (reveal) {
+      const split = new SplitText("#headline", {
+        type: "lines",
+        linesClass: "lineChildren",
+      });
+
+      gsap.to(split.lines, {
+        duration: 1,
+        y: -20,
+        opacity: 1,
+        stagger: 0.1,
+        ease: " power2",
+      });
+    }
+  }, [reveal]);
+
   return (
     <section className="about-section" data-scroll-section>
       <SectionHeader title="about" />

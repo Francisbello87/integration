@@ -45,6 +45,7 @@ section{
   padding: 100px 0;
 }
 
+
 .featured-section{
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -54,7 +55,7 @@ section{
   clip-path: inset(100% 0% 0% 0%);
   transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
 }
-.featured-section img.is-reveal{
+.featured-section * img.is-reveal{
   clip-path: inset(0% 0% 0% 0%);
 }
 .featured-row-layout, .featured-column-layout{
