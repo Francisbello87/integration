@@ -46,41 +46,7 @@ section{
 }
 
 
-.featured-section{
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  align-items: center;
-}
-.featured-section img{
-  clip-path: inset(100% 0% 0% 0%);
-  transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
-}
-.featured-section * img.is-reveal{
-  clip-path: inset(0% 0% 0% 0%);
-}
-.featured-row-layout, .featured-column-layout{
-  display: grid;
-  gap: .625rem;
-}
-.featured-row-layout{
-  grid-template-rows: repeat(2, auto);
-}
-.featured-row-layout img{
-  width: 100%;
-  object-fit: cover;
-}
-.featured-column-layout{
-  grid-template-columns: 100px auto;
-  align-items: flex-end;
-}
-.featured-column-layout img{
-  width: 100%;
-  height: 125vh;
-  object-fit: cover;
-}
-.featured-column-layout h5{
-  transform-origin: left bottom;
-}
+
 
 .divider{
   content: '';

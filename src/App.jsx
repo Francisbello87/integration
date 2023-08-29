@@ -10,8 +10,9 @@ import Logo from "../src/assets/logo.svg";
 import useLocoScroll from "./hooks/useLocoScroll";
 
 function App() {
+  const ref = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
-  useLocoScroll(!isLoading);
+  useLocoScroll();
   const [timer, setTimer] = useState(5);
   const id = useRef(null);
 
@@ -19,10 +20,16 @@ function App() {
     window.clearInterval(id.current);
     setIsLoading(false);
   };
-
+  useEffect(() => {
+    if (!isLoading && ref) {
+      if (typeof window === "undefined" || !window.document) {
+        return;
+      }
+    }
+  }, [isLoading]);
   useEffect(() => {
     id.current = window.setInterval(() => {
-      setTimer((timer) => timer - 1);
+      setTimer((time) => time - 1);
     }, 1000);
   }, []);
   useEffect(() => {
@@ -30,6 +37,10 @@ function App() {
       clearIsLoading();
     }
   }, [timer]);
+
+  if (typeof window === "undefined" || !window.document) {
+    return null;
+  }
 
   return (
     <>
@@ -39,9 +50,10 @@ function App() {
         </div>
       ) : (
         <div
+          ref={ref}
           data-scroll-container
           id="main-container"
-          className="main-container bg-bgColor w-full h-screen px-36 "
+          className="main-container bg-bgColor w-full h-full px-36 "
         >
           <Navbar />
           <Header />

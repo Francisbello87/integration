@@ -5,6 +5,6 @@
   opacity: 0;
   transform: translate(0);
 }
-.about-section.is-reveal {
+.about-section p.is-reveal {
   opacity: 1;
 }/*# sourceMappingURL=about.css.map */

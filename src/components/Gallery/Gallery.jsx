@@ -2,10 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import { images } from "../../utils/data";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import ScrollTrigger from "../../../gsap-bonus/package/ScrollTrigger";
 import cn from "classnames";
 import useOnScreen from "../../hooks/useOnScreen";
+import "../../components/Gallery/Gallery.scss";
 
-gsap.registerPlugin(ScrollTrigger)
+// gsap.registerPlugin(ScrollTrigger);
 
 export const GalleryItem = ({ src, title, updateActiveImage, index }) => {
   const ref = useRef(null);
@@ -22,9 +24,9 @@ export const GalleryItem = ({ src, title, updateActiveImage, index }) => {
       className={cn("gallery-item-wrapper ", { "is-reveal": onScreen })}
     >
       <div />
-      <div className="gallery-item w-[100%] h-[100%] relative will-change-transform">
-        <div className="gallery-item-info absolute bottom-[10%] z-10 -translate-x-[20%] text-[#dbd8d6]">
-          <h2 className="gallery-info-title leading-[6vw] font-semibold text-[6vw]">
+      <div className="gallery-item ">
+        <div className="gallery-item-info ">
+          <h2 className="gallery-info-title ">
             {title}
           </h2>
         </div>
@@ -38,7 +40,6 @@ export const GalleryItem = ({ src, title, updateActiveImage, index }) => {
   );
 };
 
-
 const Gallery = ({ src, index, columnOffset }) => {
   const [activeImage, setActiveImage] = useState(1);
   const ref = useRef(null);
@@ -46,35 +47,32 @@ const Gallery = ({ src, index, columnOffset }) => {
   useEffect(() => {
     setTimeout(() => {
       const sections = gsap.utils.toArray(".gallery-item-wrapper");
+;
       gsap.to(sections, {
         xPercent: -100 * (sections.length - 1),
         ease: "none",
         scrollTrigger: {
-          start: "top top",
+          start: "top 900",
           trigger: ref.current,
           scroller: "#main-container",
           pin: true,
           scrub: 0.5,
+          markers: true,
           snap: 1 / (sections.length - 1),
           end: () => `+=${ref.current.offsetWidth}`,
+          // end: 'bottom 10000',
         },
       });
-      // ScrollTrigger.refresh();
+      ScrollTrigger.refresh();
     });
   }, []);
 
   return (
-    <section
-      data-scroll-section
-      className="section-wrapper bg-primaryGreen -mx-[10.6vw] relative"
-    >
-      <div
-        ref={ref}
-        className="gallery h-[80vh] py-[10vh] w-[400%] flex flex-nowrap"
-      >
-        <div className="gallery-counter absolute top-[10%] left-[100px] z-10 font-Lato font-semibold text-base inline-block mix-blend-difference leading-4">
+    <section data-scroll-section className="section-wrapper gallery-wrap ">
+      <div ref={ref} className="gallery">
+        <div className="gallery-counter ">
           <span className=" text-white">{activeImage}</span>
-          <span className=" divider bg-white w-[6.25vw] my-2 mx-3 h-[1px] inline-block"></span>
+          <span className=" divider bg-white w-[6.25vw] "></span>
           <span className=" text-white">{images.length}</span>
         </div>
         {images.map((image, index) => (

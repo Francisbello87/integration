@@ -21,12 +21,12 @@ const Header = () => {
       opacity: 1,
       stagger: 0.1,
       ease: " power2",
-      onComplete: () => {
-        gsap.to(split.lines, {
-          duration: 0.9,
-          color: "#55B76B",
-        });
-      },
+      // onComplete: () => {
+      //   gsap.to(split.lines, {
+      //     duration: 0.9,
+      //     color: "#55B76B",
+      //   });
+      // },
     });
   }, []);
 

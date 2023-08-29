@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { SectionHeader } from "../SectionHeader/SectionHeader";
 import useOnScreen from "../../hooks/useOnScreen";
+import { gsap } from "gsap";
+
 import SplitText from "../../../gsap-bonus/package/SplitText";
 import cn from "classnames";
-import { gsap } from "gsap";
-gsap.registerPlugin(SplitText)
+import './about.scss'
 
 const About = () => {
   const ref = useRef();
@@ -19,15 +20,14 @@ const About = () => {
     if (reveal) {
       const split = new SplitText("#headline", {
         type: "lines",
-        linesClass: "lineChildren",
-      });
 
+      });
       gsap.to(split.lines, {
         duration: 1,
         y: -20,
         opacity: 1,
         stagger: 0.1,
-        ease: " power2",
+        ease: "power2",
       });
     }
   }, [reveal]);
